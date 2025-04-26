@@ -1,10 +1,10 @@
 const express = require('express');
 const app = express();
-const { syncModels } = require('./models');
+const { syncModels } = require('./parcial-api/models');
 
-const cursoRoutes = require('./routes/cursoRoutes');
-const estudianteRoutes = require('./routes/estudianteRoutes');
-const matriculaRoutes = require('./routes/matriculaRoutes');
+const cursoRoutes = require('./parcial-api/routes/cursoRoutes');
+const estudianteRoutes = require('./parcial-api/routes/estudianteRoutes');
+const matriculaRoutes = require('./parcial-api/routes/matriculaRoutes');
 
 app.use(express.json());
 
@@ -19,3 +19,5 @@ syncModels().then(() => {
     console.log(`Servidor corriendo en puerto ${PORT}`);
   });
 });
+
+module.exports = { app, syncModels };
